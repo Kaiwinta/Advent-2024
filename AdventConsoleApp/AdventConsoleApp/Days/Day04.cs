@@ -6,27 +6,24 @@ namespace AdventConsoleApp.Days
     {
         private List<string> splittedData = new List<string>();
 
-        private int GetProductOfString(string data)
+        private int CheckSurrounding()
         {
-            int total = 0;
-            foreach (var match in Regex.EnumerateMatches(data, @"mul\([0-9]{1,3},[0-9]{1,3}\)"))
-            {
-                string mul = data.Substring(match.Index, match.Length);
-
-                // Remove the mul(
-                int index = mul.IndexOf('(') + 1;
-                // Split the string to get only the numbers
-                mul = mul.Substring(index, mul.Length - index - 1);
-                var values = mul.Split(',');
-
-                total += int.Parse(values[0]) * int.Parse(values[1]);
-            }
-            return total;
+            // Ajout d'une double boucle pour les surrounding de -1 à 1 en évitant 0 ; 0
+            return 0;
         }
 
         protected override int Part1()
         {
-            return GetProductOfString(Data);
+            int total = 0;
+
+            for (int i = 0; i < splittedData.Count; i++)
+            {
+                foreach (var match in Regex.EnumerateMatches(splittedData[i], @"X"))
+                {
+                    total += CheckSurrounding();
+                }
+            }
+            return total;
         }
 
         private char? GetCharIfPossible(int lineIndex, int colsIndex)
