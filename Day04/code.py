@@ -34,14 +34,14 @@ def check_direction(x_base :int, y_base :int, x_margin :int, y_margin :int, data
 
 def check_surroundings(x_index :int, line_index :int, data: list[str]) -> int:
     total = 0
-    total += check_direction(line_index, x_index, 1, 0, data)
-    total += check_direction(line_index, x_index, 0, 1, data)
-    total += check_direction(line_index, x_index, 1, 1, data)
-    total += check_direction(line_index, x_index, -1, 0, data)
-    total += check_direction(line_index, x_index, -1, -1, data)
-    total += check_direction(line_index, x_index, 0, -1, data)
-    total += check_direction(line_index, x_index, 1, -1, data)
-    total += check_direction(line_index, x_index, -1, 1, data)
+    total += check_direction(x_index, line_index, 1, 0, data)
+    total += check_direction(x_index, line_index, 0, 1, data)
+    total += check_direction(x_index, line_index, 1, 1, data)
+    total += check_direction(x_index, line_index, -1, 0, data)
+    total += check_direction(x_index, line_index, -1, -1, data)
+    total += check_direction(x_index, line_index, 0, -1, data)
+    total += check_direction(x_index, line_index, 1, -1, data)
+    total += check_direction(x_index, line_index, -1, 1, data)
     return total
 
 def part1(data) -> int:
