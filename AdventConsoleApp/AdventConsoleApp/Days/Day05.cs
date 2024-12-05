@@ -1,7 +1,4 @@
-﻿using System.Text.RegularExpressions;
-using System.Windows.Markup;
-
-namespace AdventConsoleApp.Days
+﻿namespace AdventConsoleApp.Days
 {
     public class Day05 : BaseDay
     {
@@ -33,16 +30,62 @@ namespace AdventConsoleApp.Days
             return values[(values.Count - 1) / 2];
         }
 
-        protected override int Part1()
+        private bool CheckIfValid(List<int> values)
         {
-            splittedData = Data.Split('\n').ToList();
+            for (int i = 0; i < values.Count; i++)
+            {
+                if (!orderingRules.ContainsKey(values[i])) { continue; }
+                var afterMe = orderingRules[values[i]].afterMe;
+                var beforeValues = values.Slice(0, i);
+                if (beforeValues.Any(val => afterMe.Any(after => after == val)))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
+        private int OrderIfInvalid(string line)
+        {
+            var strValues = line.Split(',');
+            List<int> values = strValues.Select(str => int.Parse(str)).ToList();
+
+            if (CheckIfValid(values))
+            {
+                return 0;
+            }
+
+            for (int i = 0; i < values.Count; i++)
+            {
+                if (!orderingRules.ContainsKey(values[i])) { continue; }
+                var afterMe = orderingRules[values[i]].afterMe;
+                var beforeValues = values.Slice(0, i);
+                for (int j = 0; j < beforeValues.Count; j++)
+                {
+                    if (afterMe.Any(val => val == beforeValues[j]))
+                    {
+                        var save = values[i];
+                        values[i] = values[j];
+                        values[j] = save;
+                    }
+                }
+            }
+            if (CheckIfValid(values))
+            {
+                return values[(values.Count - 1) / 2];
+            }
+            throw new Exception($"An error occured during the sort with values {values}");
+        }
+
+        private int ParseAndComputeResult(Func<string, int> ComputeResult)
+        {
             int total = 0;
             bool isRuleDefinitions = true;
+            splittedData = Data.Split('\n').ToList();
 
             foreach (var line in splittedData)
             {
-                if (line == String.Empty ||line.Equals("\r"))
+                if (line == String.Empty || line.Equals("\r"))
                 {
                     isRuleDefinitions = false;
                     continue;
@@ -51,7 +94,7 @@ namespace AdventConsoleApp.Days
                 {
                     var values = line.Split('|');
                     var before = int.Parse(values[0]);
-                    var after  = int.Parse(values[1]);
+                    var after = int.Parse(values[1]);
 
                     if (!orderingRules.ContainsKey(before))
                     {
@@ -63,15 +106,20 @@ namespace AdventConsoleApp.Days
                 }
                 else
                 {
-                    total += GetUpdateMiddleIfValid(line);
+                    total += ComputeResult(line);
                 }
             }
             return total;
         }
+
+        protected override int Part1()
+        {
+            return ParseAndComputeResult(GetUpdateMiddleIfValid);
+        }
+
         protected override int Part2()
         {
-            int total = 0;
-            return total;
+            return ParseAndComputeResult(OrderIfInvalid);
         }
     }
 }
