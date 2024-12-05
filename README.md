@@ -2,6 +2,7 @@
  
 Desired languages:
 - Ruby
+- Crystal
 - OCaml
 - Bash
 - C#
@@ -16,3 +17,11 @@ Desired languages:
 - Dlang
 - F#
 - Php
+- R
+- Pascal
+- Excel Vba
+- Julia
+- Kotlin
+- Perl
+- Rust
+- Scratch
