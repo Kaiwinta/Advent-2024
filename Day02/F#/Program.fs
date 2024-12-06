@@ -29,14 +29,16 @@ let IsSafe (vals: list<int>) : bool =
                 safe <-false
     safe
 
-let IsSafeWithRemoval(intVals :list<int>) :bool =
-    let mutable safe = false
-    for i in 0 .. intVals.Length - 1 do
-        let tempList = removeAt i intVals
-        if (IsSafe tempList) then
-            safe <- true
-            break
-    safe
+
+let rec IsSafeWithRemoval(intVals :list<int>, i :int) :bool =
+    if i >= intVals.Length then
+        false
+    else
+        let tempList = removeAt (i, intVals)
+        if IsSafe tempList then
+            true
+        else
+            IsSafeWithRemoval(intVals, i + 1)
 
 
 let Part1 (lines :list<string>) :int =
@@ -53,7 +55,7 @@ let Part2 (lines :list<string>) :int =
         let intVals = ToListInt line
         if (IsSafe intVals) then
             total <- total + 1
-        elif (IsSafeWithRemoval intVals) then
+        elif (IsSafeWithRemoval(intVals, 0)) then
             total <- total + 1
     total
 
@@ -61,3 +63,4 @@ let lines = File.ReadAllLines("Input.txt")
 let lineList : list<string> = Seq.toList(lines);
 
 printfn "%d" (Part1 lineList)
+printfn "%d" (Part2 lineList)
