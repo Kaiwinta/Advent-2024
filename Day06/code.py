@@ -40,8 +40,14 @@ def part1(table):
             y, x = move(y, x, dir)
     return len(list_case)
 
-def dict_string(dict):
-    return f"0:{dict[0]}|1:{dict[1]}"
+def dir_to_string(dir):
+    return f"0:{dir[0]}|1:{dir[1]}"
+
+def rotate_dir(dir):
+    save = dir[0]
+    dir[0] = dir[1]
+    dir[1] = save * -1
+    return dir
 
 def part2(table):
     line_len = len(table[0])
@@ -61,8 +67,8 @@ def part2(table):
             # Boucle de déplacement
             while (True):
                 case_index = y * line_len + x
-                if ((case_index, dict_string(dir)) in list_case):
-                    list_case.add((case_index, dict_string(dir)))
+                if ((case_index, dir_to_string(dir)) not in list_case):
+                    list_case.add((case_index, dir_to_string(dir)))
                 else:
                     print(obstacle_y, obstacle_x, y, x)
                     nb_loop += 1
@@ -73,12 +79,10 @@ def part2(table):
                     break
                 if x >= line_len or x < 0:
                     break
-                # On est sur l'obstacle ou sur celui que l'on veut construire, on les fait 
+                # On est sur l'obstacle ou sur celui que l'on veut construire, on les fait rotate
                 while table[y][x] == "#" or (x == obstacle_x and y == obstacle_y):
                     y, x = move(y, x, dir, backward=True)
-                    save = dir[0]
-                    dir[0] = dir[1]
-                    dir[1] = save * -1
+                    dir = rotate_dir(dir)
                     y, x = move(y, x, dir)
     return nb_loop
 
