@@ -16,7 +16,7 @@ def move(y, x, dir:list[int], backward :bool = False):
         return (y - dir[0], x - dir[1])
     return (y + dir[0], x + dir[1])
 
-def part1(table):
+def part1(table, get_list_traj :bool = False):
     list_case = []
     line_len = len(table[0])
     y, x = find_guard(table)
@@ -36,6 +36,8 @@ def part1(table):
             y, x = move(y, x, dir, backward=True)
             dir = rotate_dir(dir)
             y, x = move(y, x, dir)
+    if (get_list_traj):
+        return list_case
     return len(list_case)
 
 def dir_to_string(dir):
@@ -51,10 +53,14 @@ def part2(table):
     line_len = len(table[0])
     nb_loop = 0
     guard_y, guard_x = find_guard(table)
+    list_traj = part1(table, get_list_traj=True)
 
     # On parcours toutes les cases pour voir si la création à cet emplacement marche
     for obstacle_y in range(len(table)):
         for obstacle_x in range(len(table[obstacle_y])):
+            case_index = obstacle_y * line_len + obstacle_x
+            if (case_index not in list_traj):
+                continue
             # On est sur un obstacle on ne peux pas en construire
             if (table[obstacle_y][obstacle_x] == "#"):
                 continue
