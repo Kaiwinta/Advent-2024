@@ -30,11 +30,13 @@ let IsSafe (vals: list<int>) : bool =
     safe
 
 let IsSafeWithRemoval(intVals :list<int>) :bool =
-    for i in 0 .. intVals.Length do
+    let mutable safe = false
+    for i in 0 .. intVals.Length - 1 do
         let tempList = removeAt i intVals
         if (IsSafe tempList) then
-            true
-    false
+            safe <- true
+            break
+    safe
 
 
 let Part1 (lines :list<string>) :int =
