@@ -68,7 +68,6 @@ def part2(table):
                 if ((case_index, dir_to_string(dir)) not in list_case):
                     list_case.add((case_index, dir_to_string(dir)))
                 else:
-                    print(obstacle_y, obstacle_x, y, x)
                     nb_loop += 1
                     break
                 y, x = move(y, x, dir)
