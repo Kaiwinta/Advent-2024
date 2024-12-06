@@ -4,7 +4,7 @@ printfn "Hello from F#"
 open System.IO
 
 let lines = File.ReadAllLines("Input.txt")
-let lineList = Seq.toList(lines);
+let lineList : List<string> = Seq.toList(lines);
 
 let ToInt str : int = str |> int
 
@@ -13,8 +13,8 @@ let isSafe(line :string) :bool =
     let compare = 0
     let lastValue = -1
     values |> List.map ToInt |>
-        if lastValue == -1 then (lastValue = intValue)
-    )
+        if lastValue = -1 then (lastValue <- intValue)
+        else ()
     values.Length > 0
 
 lineList |> List.iter (fun line ->
