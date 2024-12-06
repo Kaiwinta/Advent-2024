@@ -1,30 +1,50 @@
-# Advent-2024
- 
-Desired languages:
-- Ruby
-- Crystal
-- OCaml
-- Bash
-- C#
-- C
-- Python
-- Js
-- CoBol ?? Fortran
-- Go
-- Java
-- CoffeScript
-- Haskell
-- Dlang
-- F#
-- Php
-- R
-- Pascal
-- Excel Vba
-- Julia
-- Kotlin
-- Perl
-- Rust
-- Scratch            <td rowspan="1"><a href="./AdventConsoleApp\AdventConsoleApp\Days\Day03.cs">Day3</a></td>
+# Advent of code 2024
+
+## Table of Contents
+
+- [About](#about)
+- [Languages](#languages)
+
+## About <a name = "about"></a>
+
+This is my repo for the advent of code 2024, my goal is to try many of the following languages
+
+## Languages
+
+This is a list of all the languages that i want to try and test.
+
+<table align="center">
+    <thead>
+        <tr>
+            <th>Language</th>
+            <th>Days</th>
+            <th>Liked ?</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="6" style="text-align: center;">Python</td>
+            <td rowspan="1"><a href="./Day01/">Day1</a></td>
+            <td rowspan="6">✅</td>
+        </tr>
+        <tr>
+            <td rowspan="1"><a href="./Day02/">Day2</a></td>
+        </tr>
+        <tr>
+            <td rowspan="1"><a href="./Day03/">Day3</a></td>
+        </tr>
+        <tr>
+            <td rowspan="1"><a href="./Day04/">Day4</a></td>
+        </tr>
+        <tr>
+            <td rowspan="1"><a href="./Day05/">Day5</a></td>
+        </tr>
+        <tr>
+            <td rowspan="1"><a href="./Day06/">Day6</a></td>
+        </tr>
+        <tr>
+            <td rowspan="3" style="text-align: center;">C#</td>
+            <td rowspan="1"><a href="./AdventConsoleApp\AdventConsoleApp\Days\Day03.cs">Day3</a></td>
             <td rowspan="3">✅</td>
         </tr>
         <tr>
