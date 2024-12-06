@@ -34,9 +34,7 @@ def part1(table):
             break
         while table[y][x] == "#":
             y, x = move(y, x, dir, backward=True)
-            save = dir[0]
-            dir[0] = dir[1]
-            dir[1] = save * -1
+            dir = rotate_dir(dir)
             y, x = move(y, x, dir)
     return len(list_case)
 
