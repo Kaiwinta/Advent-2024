@@ -1,0 +1,28 @@
+This is a list of all the languages that i want to try and test.
+
+| Language					| Days  | Liked ? |
+|---------------------------|-------|---------|
+| Ruby                      |       |		  |
+| Crystal					|       |		  |
+| OCaml                     |       |		  |
+| Bash                      |       |		  |
+| C#                        |       |		  |
+| C                         |       |		  |
+| Python                    |       |		  |
+| Js                        |       |		  |
+| CoBol ?? Fortran          |       |		  |
+| Go                        |       |		  |
+| Java                      |       |		  |
+| CoffeScript               |       |		  |
+| Haskell                   |       |		  |
+| Dlang                     |       |		  |
+| F#                        |       |		  |
+| Php                       |       |		  |
+| R					        |       |		  |
+| Pascal		            |       |		  |
+| Excel Vba                 |       |		  |
+| Julia                     |       |		  |
+| Kotlin                    |       |		  |
+| Perl                      |       |		  |
+| Rust                      |       |		  |
+| Scratch		            |       |		  |
