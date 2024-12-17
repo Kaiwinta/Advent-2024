@@ -23,7 +23,7 @@ jobs:
     - name: Display Version
       run: dotnet --version
     - name: Build
-      run: dotnet build --no-restore .\AdventConsoleApp/AdventConsoleApp.sln
+      run: dotnet build --no-restore ./AdventConsoleApp/AdventConsoleApp.sln
 
   buildtest:
 
