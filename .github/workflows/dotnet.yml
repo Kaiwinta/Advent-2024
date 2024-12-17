@@ -20,5 +20,25 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
+    - name: Display Version
+      run: dotnet --version
     - name: Build
       run: dotnet build --no-restore .\AdventConsoleApp\AdventConsoleApp.sln
+
+  buildtest:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+    - name: Display Version
+      run: dotnet --version
+    - name: Restore
+      run: dotnet restore
+    - name: Build
+      run: dotnet build
+    
